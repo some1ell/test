@@ -52,6 +52,7 @@ matrix:
 
 install:
   - composer install --no-interaction # Install Steward and its dependencies
+  - composer require lmc/steward
 # Currently all build are against master; reenable this after Steward 3.0 is tagged
 #  - if [ -n "$USE_STEWARD_MASTER" ]; then composer require lmc/steward:dev-master --update-with-dependencies; fi
   - ./vendor/bin/steward install
