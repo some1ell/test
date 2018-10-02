@@ -1,0 +1,12 @@
+addons:
+  browserstack:
+    username: "benfisher4"
+    access_key: "mVjnFtMSD3V8eGxaeorF"
+language: php
+php:
+  - 7.0
+  - nightly
+install:
+  - composer require lmc/steward
+  - ./vendor/bin/steward install
+  - composer dump-autoload
