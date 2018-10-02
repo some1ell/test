@@ -1,0 +1,10 @@
+{
+  "require": {
+    "lmc/steward": "^2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "My\\": "tests/"
+    }
+  }
+}
