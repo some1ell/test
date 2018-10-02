@@ -37,16 +37,6 @@ matrix:
       script:
         - ./vendor/bin/steward run production chrome -vvv
       after_script: ~
-    - php: 7.2
-      env: CHECK_CODESTYLE=1
-      before_install:
-        - phpenv config-rm xdebug.ini
-      install:
-        - composer install --no-interaction
-      before_script: ~
-      script:
-        - composer analyze
-      after_script: ~
   allow_failures:
     - env: BROWSER=firefox
 
