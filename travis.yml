@@ -14,7 +14,7 @@ addons:
 env:
   global:
     - USE_STEWARD_MASTER=1 # During Steward 3.0 development always run against latest Steward master branch
-    - SELENIUM_SERVER_VERSION="3.8.1"
+    - SELENIUM_SERVER_VERSION="3.14.0"
     - CHROMEDRIVER_VERSION="2.36"
     - GECKODRIVER_VERSION="0.19.1"
   matrix:
@@ -24,7 +24,7 @@ env:
 matrix:
   include:
     - php: 7.2
-      env: BROWSER=microsoftedge BROWSERSTACK=1 # run tests in MicrosoftEdge on SauceLabs cloud
+      env: BROWSER=microsoftedge LOCAL=true localIdentifier=BROWSERSTACK_LOCAL_IDENTIFIER # run tests in MicrosoftEdge on SauceLabs cloud
       install:
         - composer install --no-interaction
       before_script: ~
@@ -32,7 +32,7 @@ matrix:
         - ./vendor/bin/steward run production $BROWSER -vvv --server-url=https://benfisher4:mVjnFtMSD3V8eGxaeorF@hub-cloud.browserstack.com/wd/hub  --capability="platform:Windows 10" --capability="version:'14.14393'"
       after_script: ~
     - php: 7.2
-      env: BROWSER=firefox BROWSERSTACK=1 # run tests in Firefox on SauceLabs cloud
+      env: BROWSER=firefox LOCAL=true localIdentifier=BROWSERSTACK_LOCAL_IDENTIFIER # run tests in Firefox on SauceLabs cloud
       install:
         - composer install --no-interaction # This is actually composer update, because composer.lock is temporarily removed from the repo
       before_script: ~

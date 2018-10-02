@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a23bc07-7721-45f9-995c-0da5b1a4b9c4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/easy-coding-standard.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/steward.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/travis.yml" afterPath="$PROJECT_DIR$/travis.yml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,7 +44,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="easy-coding-standard.yaml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="easy-coding-standard.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/easy-coding-standard.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -56,12 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="travis.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-683">
-              <caret line="31" column="146" lean-forward="false" selection-start-line="31" selection-start-column="146" selection-end-line="31" selection-end-column="146" />
-              <caret line="39" column="146" lean-forward="false" selection-start-line="39" selection-start-column="146" selection-end-line="39" selection-end-column="146" />
+            <state relative-caret-position="-1042">
+              <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -84,6 +81,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>SAUCELABS</find>
+      <find>SELENIUM_SERVER_VERSION</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -93,11 +91,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/tests/doCheckoutBSTest.php" />
-        <option value="$PROJECT_DIR$/travis.yml" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/steward.yml" />
         <option value="$PROJECT_DIR$/easy-coding-standard.yaml" />
+        <option value="$PROJECT_DIR$/travis.yml" />
       </list>
     </option>
   </component>
@@ -191,12 +189,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1538511107732</updated>
-      <workItem from="1538511109083" duration="2336000" />
+      <workItem from="1538511109083" duration="2634000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2336000" />
+    <option name="totallyTimeSpent" value="2634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="87" y="84" width="1440" height="782" extended-state="0" />
@@ -243,15 +241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-683">
-          <caret line="31" column="146" lean-forward="false" selection-start-line="31" selection-start-column="146" selection-end-line="31" selection-end-column="146" />
-          <caret line="39" column="146" lean-forward="false" selection-start-line="39" selection-start-column="146" selection-end-line="39" selection-end-column="146" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -280,6 +269,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="132" lean-forward="false" selection-start-line="4" selection-start-column="132" selection-end-line="4" selection-end-column="132" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1042">
+          <caret line="16" column="37" lean-forward="false" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
           <folding />
         </state>
       </provider>
