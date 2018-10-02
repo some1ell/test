@@ -22,7 +22,6 @@ env:
 matrix:
   include:
     - php: 7.2
-      env: BROWSER=microsoftedge LOCAL=true localIdentifier=BROWSERSTACK_LOCAL_IDENTIFIER # run tests in MicrosoftEdge on SauceLabs cloud
       install:
         - composer install --no-interaction
       before_script: ~
@@ -30,13 +29,6 @@ matrix:
         - ./vendor/bin/steward run production chrome -vvv
       after_script: ~
     - php: 7.2
-      env: BROWSER=firefox LOCAL=true localIdentifier=BROWSERSTACK_LOCAL_IDENTIFIER # run tests in Firefox on SauceLabs cloud
-      install:
-        - composer install --no-interaction # This is actually composer update, because composer.lock is temporarily removed from the repo
-      before_script: ~
-      script:
-        - ./vendor/bin/steward run production chrome -vvv
-      after_script: ~
   allow_failures:
     - env: BROWSER=firefox
 
