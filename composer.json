@@ -1,10 +1,31 @@
 {
-  "require": {
-    "lmc/steward": "^2.3"
-  },
-  "autoload": {
-    "psr-4": {
-      "My\\": "tests/"
+    "name": "lmc/steward-example",
+    "description": "Example repository showing usage of Steward library",
+    "license": "MIT",
+    "authors": [
+        {
+          "name": "Ondřej Machulda",
+          "email": "ondrej.machulda@gmail.com"
+        },
+        {
+          "name": "LMC s.r.o.",
+          "homepage": "https://github.com/lmc-eu"
+        }
+    ],
+    "prefer-stable": true,
+    "require": {
+        "lmc/steward": "^2.3",
+        "fzaninotto/faker": "~1.4"
+    },
+    "autoload": {
+        "psr-4": {
+          "My\\Steward\\": "src/",
+          "My\\": "tests/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
     }
-  }
 }
