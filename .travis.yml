@@ -11,7 +11,6 @@ addons:
 
 env:
   global:
-    - USE_STEWARD_MASTER=1 # During Steward 3.0 development always run against latest Steward master branch
     - SELENIUM_SERVER_VERSION="3.14.0"
     - CHROMEDRIVER_VERSION="2.36"
     - GECKODRIVER_VERSION="0.19.1"
@@ -37,24 +36,12 @@ matrix:
       script:
         - ./vendor/bin/steward run production chrome -vvv
       after_script: ~
-    - php: 7.2
-      env: CHECK_CODESTYLE=1
-      before_install:
-        - phpenv config-rm xdebug.ini
-      install:
-        - composer install --no-interaction
-      before_script: ~
-      script:
-        - composer analyze
-      after_script: ~
   allow_failures:
     - env: BROWSER=firefox
 
 install:
   - composer install --no-interaction # Install Steward and its dependencies
   - composer require lmc/steward
-# Currently all build are against master; reenable this after Steward 3.0 is tagged
-#  - if [ -n "$USE_STEWARD_MASTER" ]; then composer require lmc/steward:dev-master --update-with-dependencies; fi
   - ./vendor/bin/steward install
   - if [ "$BROWSER" = "chrome" ]; then mkdir chromedriver; wget -q -t 3 https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip; unzip chromedriver_linux64 -d chromedriver; fi
   - if [ "$BROWSER" = "chrome" ]; then export CHROMEDRIVER_PATH=./chromedriver/chromedriver; fi
@@ -62,7 +49,7 @@ install:
   - if [ "$BROWSER" = "firefox" ]; then export GECKODRIVER_PATH=./geckodriver/geckodriver; fi
 
 before_script:
-  - java -jar ./vendor/bin/selenium-server-standalone-3.14.0.jar -role hub -enablePassThrough false -log selenium-server.log &
+  - java -jar ./vendor/bin/selenium-server-standalone-3.14.0.jar
   - until $(echo | nc localhost 4444); do sleep 1; echo Waiting for selenium-server to start...; done;
 
   # Start one Selenium node for headless Chrome
@@ -88,7 +75,3 @@ after_script:
   - cat selenium-server.log
   - cat selenium-node-1.log
   - cat selenium-node-2.log
-
-cache:
-  directories:
-    - $HOME/.composer/cache
