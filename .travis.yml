@@ -22,33 +22,31 @@ env:
     - BROWSER=firefox
     - BROWSER=chrome
 
-test:
-    pre:
-    # Download the browserstack binary file
-    - wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
-    # Unzip the browserstack binary file
-    - unzip BrowserStackLocal-linux-x64.zip
-    # Run the file with your access key
-    - ./BrowserStackLocal mVjnFtMSD3V8eGxaeorF > /dev/null &
-    - sleep 10
-
 matrix:
   include:
     - php: 7.2
       env: BROWSER=microsoftedge BROWSERSTACK=1 # run tests in MicrosoftEdge on BrowserStack cloud
       install:
         - composer install --no-interaction
-      before_script: ~
+      before_script:
+          - wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+          - unzip BrowserStackLocal-linux-x64.zip
+          - ./BrowserStackLocal mVjnFtMSD3V8eGxaeorF > /dev/null &
+          - sleep 10
       script:
-        - ./vendor/bin/steward run production $BROWSER -vvv --server-url=https://benfisher4:mVjnFtMSD3V8eGxaeorF@hub-cloud.browserstack.com/wd/hub --capability="browser:IE" --capability="browser_version:11.0" --capability="os:Windows" --capability="os_version:10" --capability="resolution:1024x768"
+        - ./vendor/bin/steward run dev $BROWSER -vvv --server-url=https://benfisher4:mVjnFtMSD3V8eGxaeorF@hub-cloud.browserstack.com/wd/hub --capability="browser:IE" --capability="browser_version:11.0" --capability="os:Windows" --capability="os_version:10" --capability="resolution:1024x768"
       after_script: ~
     - php: 7.2
       env: BROWSER=firefox BROWSERSTACK=1 # run tests in Firefox on BrowserStack cloud
       install:
         - composer install --no-interaction
-      before_script: ~
+      before_script:
+          - wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+          - unzip BrowserStackLocal-linux-x64.zip
+          - ./BrowserStackLocal mVjnFtMSD3V8eGxaeorF > /dev/null &
+          - sleep 10
       script:
-        - ./vendor/bin/steward run production $BROWSER -vvv --server-url=https://benfisher4:mVjnFtMSD3V8eGxaeorF@hub-cloud.browserstack.com/wd/hub --capability="browser:IE" --capability="browser_version:11.0" --capability="os:Windows" --capability="os_version:10" --capability="resolution:1024x768"
+        - ./vendor/bin/steward run dev $BROWSER -vvv --server-url=https://benfisher4:mVjnFtMSD3V8eGxaeorF@hub-cloud.browserstack.com/wd/hub --capability="browser:IE" --capability="browser_version:11.0" --capability="os:Windows" --capability="os_version:10" --capability="resolution:1024x768"
       after_script: ~
   allow_failures:
     - env: BROWSER=firefox
