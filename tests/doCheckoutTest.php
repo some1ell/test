@@ -17,7 +17,7 @@ class doCheckoutTest extends MyAbstractTestCase {
 
         $screenRecorder->startRecording('myVideo.flv');*/
         // Load the URL (will wait until page is loaded)
-        $this->wd->get("https://coko-dev-banana.myshopify.com"); // $this->wd holds instance of \RemoteWebDriver
+        $this->wd->get(self::$baseUrl); // $this->wd holds instance of \RemoteWebDriver
 
         // Do some assertion
         $this->assertContains('coko-dev-banana', $this->wd->getTitle());
@@ -38,6 +38,10 @@ class doCheckoutTest extends MyAbstractTestCase {
         //$this->assertContains("Your Shopping Cart– coko-dev-banana",$this->wd->getTitle());
 
         //$this->assertContains("coko-dev-banana.myshopify.com - Secure Checkout",$this->wd->getTitle());
+
+        // Wait until line items are loaded
+        $this->wd->wait(10, 1000)->until(
+            WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::className("item-image-holder")));
 
         // Wait to load -> Find email
         $this->waitForName("email")->click();
@@ -121,6 +125,4 @@ class doCheckoutTest extends MyAbstractTestCase {
         $this->wd->quit();
 
     }
-
-
 }

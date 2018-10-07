@@ -3,7 +3,6 @@ language: php
 dist: trusty
 
 php:
-  - 5.6
   - 7.2
 
 addons:
@@ -16,27 +15,26 @@ env:
     - CHROMEDRIVER_VERSION="2.35"
     - GECKODRIVER_VERSION="0.19.1"
   matrix:
-    - BROWSER=phantomjs
     - BROWSER=firefox
     - BROWSER=chrome
 
 matrix:
   include:
     - php: 7.2
-      env: BROWSER=microsoftedge SAUCELABS=1 # run tests in MicrosoftEdge on SauceLabs cloud
+      env: BROWSER=microsoftedge BROWSERSTACK=1 # run tests in MicrosoftEdge on BrowserStack cloud
       install:
         - composer install --no-interaction
       before_script: ~
       script:
-        - ./vendor/bin/steward run production $BROWSER -vvv --server-url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com  --capability="platform:Windows 10" --capability="version:'14.14393'"
+        - ./vendor/bin/steward run production $BROWSER -vvv --server-url=https://benfisher4:mVjnFtMSD3V8eGxaeorF@hub-cloud.browserstack.com/wd/hub --capability="browser:IE" --capability="browser_version:11.0" --capability="os:Windows" --capability="os_version:10" --capability="resolution:1024x768"
       after_script: ~
     - php: 7.2
-      env: BROWSER=firefox SAUCELABS=1 # run tests in Firefox on SauceLabs cloud
+      env: BROWSER=firefox BROWSERSTACK=1 # run tests in Firefox on BrowserStack cloud
       install:
         - composer install --no-interaction
       before_script: ~
       script:
-        - ./vendor/bin/steward run production $BROWSER -vvv --server-url=http://$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com  --capability="platform:Windows 10" --capability="version:'52.0'"
+        - ./vendor/bin/steward run production $BROWSER -vvv --server-url=https://benfisher4:mVjnFtMSD3V8eGxaeorF@hub-cloud.browserstack.com/wd/hub --capability="browser:IE" --capability="browser_version:11.0" --capability="os:Windows" --capability="os_version:10" --capability="resolution:1024x768"
       after_script: ~
   allow_failures:
     - env: BROWSER=firefox
@@ -50,17 +48,10 @@ install:
   - if [ "$BROWSER" = "chrome" ]; then export CHROMEDRIVER_PATH=./chromedriver/chromedriver; fi
   - if [ "$BROWSER" = "firefox" ]; then mkdir geckodriver; wget -q -t 3 https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIVER_VERSION/geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz; tar -xzf geckodriver-v$GECKODRIVER_VERSION-linux64.tar.gz -C geckodriver; fi
   - if [ "$BROWSER" = "firefox" ]; then export GECKODRIVER_PATH=./geckodriver/geckodriver; fi
-  - if [ "$BROWSER" = "phantomjs" ]; then wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2; fi
-  - if [ "$BROWSER" = "phantomjs" ]; then tar -xvf ./phantomjs-1.9.8-linux-x86_64.tar.bz2; fi
-  - if [ "$BROWSER" = "phantomjs" ]; then export PATH=$PWD/phantomjs-1.9.8-linux-x86_64/bin:$PATH; fi
 
 before_script:
   - java -jar $SELENIUM_PATH -role hub -enablePassThrough false -log selenium-server.log &
   - until $(echo | nc localhost 4444); do sleep 1; echo Waiting for selenium-server to start...; done;
-
-  # Start two PhantomJS instances
-  - if [ "$BROWSER" = "phantomjs" ]; then phantomjs --webdriver-selenium-grid-hub=http://127.0.0.1:4444 --webdriver=8910 & fi
-  - if [ "$BROWSER" = "phantomjs" ]; then phantomjs --webdriver-selenium-grid-hub=http://127.0.0.1:4444 --webdriver=8911 & fi
 
   # Start Chrome on first Selenium node
   - if [ "$BROWSER" = "chrome" ]; then java -Dwebdriver.chrome.driver="$CHROMEDRIVER_PATH" -jar $SELENIUM_PATH -role node -port 8910 -log selenium-node-1.log -enablePassThrough false & fi
@@ -78,7 +69,7 @@ before_script:
   - sleep 3 # wait until browsers starts
 
 script:
-  - ./vendor/bin/steward run production $BROWSER -vvv # Run the tests in $BROWSER and specify `production` as an environment name
+  - ./vendor/bin/steward run dev $BROWSER -vvv # Run the tests in $BROWSER and specify `dev` as an environment name
 
 after_script:
   - ./vendor/bin/steward results -vvv

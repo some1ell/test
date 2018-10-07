@@ -1,6 +1,6 @@
 <?php
 
-namespace My\Steward;
+namespace My\Carthook;
 
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
@@ -16,7 +16,7 @@ use OndraM\CiDetector\CiDetector;
  * you can implement the CustomCapabilitiesResolverInterface.
  *
  * Then you must specify the Resolver in steward.yml configuration file like this:
- * `capabilities_resolver: My\Steward\CapabilitiesResolver`
+ * `capabilities_resolver: My\Carthook\CapabilitiesResolver`
  *
  * @see https://github.com/lmc-eu/steward/wiki/Set-custom-capabilities
  */
@@ -51,9 +51,6 @@ class CustomCapabilitiesResolver implements CustomCapabilitiesResolverInterface
         }
         /*if ($this->config->browserName === WebDriverBrowserType::CHROME) {
             $chromeOptions = new ChromeOptions();
-            // In headless Chrome 60, window size cannot be changed run-time:
-            // https://bugs.chromium.org/p/chromium/issues/detail?id=604324#c46
-            // --no-sandbox is workaround for Chrome crashing: https://github.com/SeleniumHQ/selenium/issues/4961
             $chromeOptions->addArguments(['--headless', 'window-size=1280,1024', '--no-sandbox']);
             $capabilities->setCapability(ChromeOptions::CAPABILITY, $chromeOptions);
         }*/

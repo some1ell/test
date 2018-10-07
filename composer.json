@@ -1,15 +1,15 @@
 {
-    "name": "lmc/steward-example",
-    "description": "Example repository showing usage of Steward library",
-    "license": "MIT",
+    "name": "Carthook tests",
+    "description": "Carthook selenium automation tests",
+    "license": "Carthook",
     "authors": [
         {
-          "name": "Ondřej Machulda",
-          "email": "ondrej.machulda@gmail.com"
+          "name": "Sašo Krajnc",
+          "email": "saso@carthook.com"
         },
         {
-          "name": "LMC s.r.o.",
-          "homepage": "https://github.com/lmc-eu"
+          "name": "Carthook",
+          "homepage": "https://carthook.com"
         }
     ],
     "prefer-stable": true,
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-          "My\\Steward\\": "src/",
+          "My\\Carthook\\": "src/",
           "My\\": "tests/"
         }
     },

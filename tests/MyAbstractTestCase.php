@@ -24,13 +24,16 @@ abstract class MyAbstractTestCase extends AbstractTestCase
         // Set base url according to environment
         switch (ConfigProvider::getInstance()->env) {
             case 'production':
-                self::$baseUrl = 'https://www.w3.org/';
+                self::$baseUrl = '';
                 break;
             case 'staging':
-                self::$baseUrl = 'http://some-staging-url/';
+                self::$baseUrl = 'https://coko-banana.myshopify.com';
+                break;
+            case 'dev':
+                self::$baseUrl = 'https://coko-dev-banana.myshopify.com';
                 break;
             case 'local':
-                self::$baseUrl = 'http://localhost/';
+                self::$baseUrl = '';
                 break;
             default:
                 throw new \RuntimeException(sprintf('Unknown environment "%s"', ConfigProvider::getInstance()->env));
