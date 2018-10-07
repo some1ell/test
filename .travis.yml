@@ -11,6 +11,7 @@ addons:
   browserstack:
       username: "benfisher4"
       access_key: "mVjnFtMSD3V8eGxaeorF"
+      forcelocal: true
 
 env:
   global:
@@ -32,7 +33,7 @@ matrix:
         - ./vendor/bin/steward run dev $BROWSER -vvv --server-url=https://benfisher4:mVjnFtMSD3V8eGxaeorF@hub-cloud.browserstack.com/wd/hub --capability="browser:IE" --capability="browser_version:11.0" --capability="os:Windows" --capability="os_version:10" --capability="resolution:1024x768" --capability="localIdentifier:BROWSERSTACK_LOCAL_IDENTIFIER"
       after_script: ~
     - php: 7.2
-      env: BROWSER=firefox BROWSERSTACK_LOCAL_IDENTIFIER=1 # run tests in Firefox on BrowserStack cloud
+      env: BROWSER=firefox BROWSERSTACK_LOCAL_IDENTIFIER BROWSERSTACK_LOCAL_IDENTIFIER=1 # run tests in Firefox on BrowserStack cloud
       install:
         - composer install --no-interaction
       before_script: ~
