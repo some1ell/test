@@ -95,9 +95,8 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="31" column="351" lean-forward="false" selection-start-line="31" selection-start-column="351" selection-end-line="31" selection-end-column="351" />
-              <caret line="39" column="351" lean-forward="false" selection-start-line="39" selection-start-column="351" selection-end-line="39" selection-end-column="351" />
+            <state relative-caret-position="235">
+              <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -277,12 +276,12 @@
       <updated>1538511107732</updated>
       <workItem from="1538511109083" duration="5204000" />
       <workItem from="1538686302526" duration="109000" />
-      <workItem from="1538722348557" duration="34980000" />
+      <workItem from="1538722348557" duration="35038000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40293000" />
+    <option name="totallyTimeSpent" value="40351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="782" extended-state="0" />
@@ -638,9 +637,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="31" column="351" lean-forward="false" selection-start-line="31" selection-start-column="351" selection-end-line="31" selection-end-column="351" />
-          <caret line="39" column="351" lean-forward="false" selection-start-line="39" selection-start-column="351" selection-end-line="39" selection-end-column="351" />
+        <state relative-caret-position="235">
+          <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
           <folding />
         </state>
       </provider>
