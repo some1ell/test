@@ -8,6 +8,10 @@ php:
 addons:
   firefox: latest
   chrome: stable
+  browserstack:
+      forcelocal: true
+      username: benfisher4
+      access_key: mVjnFtMSD3V8eGxaeorF
 
 env:
   global:
