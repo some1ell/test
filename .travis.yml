@@ -29,8 +29,8 @@ test:
     # Unzip the browserstack binary file
     - unzip BrowserStackLocal-linux-x64.zip
     # Run the file with your access key
-    - ./BrowserStackLocal mVjnFtMSD3V8eGxaeorF:
-        background: true
+    - ./BrowserStackLocal mVjnFtMSD3V8eGxaeorF > /dev/null &
+    - sleep 10
 
 matrix:
   include:
