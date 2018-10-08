@@ -48,7 +48,7 @@ class doCheckoutTest extends MyAbstractTestCase {
 
         //create cookie to check later which email was entered
         // Enter email
-        $this->wd->getKeyboard()->sendKeys('sasokrajnc+1@gmail.com');
+        $this->wd->getKeyboard()->sendKeys('sasokrajnc@gmail.com');
 
         // Find first name
         $this->findByName('first_name')->click();
